@@ -49,51 +49,47 @@ For example, we can guide a model to generate "world" by modifying embeddings in
 
 ---
 
+Certainly! Here's the mathematical breakdown in plain text for GitHub without special characters:
+
+---
+
 ## **3. Mathematical Breakdown**
 
 ### **Cosine Similarity and Distance**
-To find the closest tokens to a given embedding \( e_{\text{opt}} \), we compute the cosine similarity:
-\[
-\text{cos\_sim}(u, v) = \frac{u \cdot v}{\|u\| \|v\|}
-\]
-- \( u \cdot v \): Dot product of vectors \( u \) and \( v \).
-- \( \|u\| \): Euclidean norm of \( u \).
+To find the closest tokens to a given embedding, we compute the cosine similarity.
 
 The **cosine distance** is then:
-\[
-\text{cos\_dist} = 1 - \text{cos\_sim}(u, v)
-\]
+
+    cosine_distance = 1 - cosine_similarity
 
 ### **Logits and Token Selection**
-At each timestep, the transformer predicts logits \( L_t \) for all vocabulary tokens:
-\[
-L_t = f_{\text{model}}(E_{1:t})
-\]
-The most probable token is selected using:
-\[
-\text{argmax}(L_t) = \arg\max_{v \in V} L_t
-\]
+At each timestep, the transformer predicts logits L_t for all vocabulary tokens:
 
-The corresponding embedding \( e_{\text{output}} \) is appended to the sequence:
-\[
-E_{1:t+1} = \text{concat}(E_{1:t}, e_{\text{output}})
-\]
+    L_t = f_model(E_1:t)
+
+The most probable token is selected using:
+
+    argmax(L_t) = argmax_{v in V} L_t
+
+The corresponding embedding e_output is appended to the sequence:
+
+    E_1:t+1 = concat(E_1:t, e_output)
 
 ---
 
 ### **Distance Regularization**
-Ensures that optimized embeddings \( e_{\text{opt}} \) stay close to valid embeddings \( e_{\text{closest}} \):
-\[
-\mathcal{L}_{\text{dist}} = \|e_{\text{opt}} - e_{\text{closest}}\|_2
-\]
+Ensures that optimized embeddings e_opt stay close to valid embeddings e_closest:
+
+    L_dist = ||e_opt - e_closest||_2
 
 ### **Normalization**
 Normalizes embeddings to a unit range:
-\[
-e_{\text{norm}} = \frac{e - \min(e)}{\max(e) - \min(e)}
-\]
+
+    e_norm = (e - min(e)) / (max(e) - min(e))
 
 ---
+
+This should be suitable for GitHub with plain text formatting!
 
 ## **4. Key Functions**
 

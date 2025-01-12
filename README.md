@@ -172,5 +172,4 @@ Below are word clouds generated from the optimized embeddings for different targ
 
 ## **7. Credits**
 
-This project is **heavily inspired by [Jessica Rumbelow's Backwards repository](https://github.com/jessicarumbelow/Backwards)**, which introduced the concept of embedding optimization for text generation. This implementation builds on her work by adding:
-
+This project is **heavily inspired by [Jessica Rumbelow's Backwards repository](https://github.com/jessicarumbelow/Backwards)**, which introduced the concept of embedding optimization for text generation. 

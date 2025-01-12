@@ -45,13 +45,10 @@ For example, we can guide a model to generate "world" by modifying embeddings in
 
 
 4. **Total Loss**:
-   Combines all components:
+   Combines all components.
 
 ---
 
-Certainly! Here's the mathematical breakdown in plain text for GitHub without special characters:
-
----
 
 ## **3. Mathematical Breakdown**
 

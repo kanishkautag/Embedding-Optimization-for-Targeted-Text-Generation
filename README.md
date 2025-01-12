@@ -34,27 +34,18 @@ For example, we can guide a model to generate "world" by modifying embeddings in
 ### **Constraints**
 1. **Log-Probability Loss**:
    Encourages the model to generate tokens corresponding to the target output.
-   \[
-   \mathcal{L}_{\text{prob}} = -\log P(y_t | E_{\text{input}})
-   \]
+
 
 2. **Distance Regularization**:
    Keeps optimized embeddings close to valid token embeddings to ensure meaningful outputs.
-   \[
-   \mathcal{L}_{\text{dist}} = \|e_{\text{opt}} - e_{\text{closest}}\|_2
-   \]
+
 
 3. **Diversity Penalty**:
    Penalizes repetitive outputs to encourage diverse generations.
-   \[
-   \mathcal{L}_{\text{div}} = -\log \left( 1 + \frac{\text{unique tokens}}{\text{total tokens}} \right)
-   \]
+
 
 4. **Total Loss**:
    Combines all components:
-   \[
-   \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{prob}} + \lambda_{\text{dist}} \cdot \mathcal{L}_{\text{dist}} + \lambda_{\text{div}} \cdot \mathcal{L}_{\text{div}}
-   \]
 
 ---
 

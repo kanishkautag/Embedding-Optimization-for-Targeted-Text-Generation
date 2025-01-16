@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/c482c08f-1b09-4718-a9aa-9edf2b4fa21e)Here’s the updated version of your project description, where I have removed the "main function" references and added details about displaying word cloud photos:
+
+---
+
 # **Embedding Optimization for Targeted Text Generation**
 
 This project explores **optimizing input embeddings** to steer language models (e.g., GPT-2) toward generating specific target outputs. By directly manipulating embeddings, we can influence the model's predictions while maintaining coherence and adherence to the vocabulary.
@@ -35,20 +39,16 @@ For example, we can guide a model to generate "world" by modifying embeddings in
 1. **Log-Probability Loss**:
    Encourages the model to generate tokens corresponding to the target output.
 
-
 2. **Distance Regularization**:
    Keeps optimized embeddings close to valid token embeddings to ensure meaningful outputs.
 
-
 3. **Diversity Penalty**:
    Penalizes repetitive outputs to encourage diverse generations.
-
 
 4. **Total Loss**:
    Combines all components.
 
 ---
-
 
 ## **3. Mathematical Breakdown**
 
@@ -60,7 +60,7 @@ The **cosine distance** is then:
     cosine_distance = 1 - cosine_similarity
 
 ### **Logits and Token Selection**
-At each timestep, the transformer predicts logits L_t for all vocabulary tokens:
+At each timestep, the transformer predicts logits \( L_t \) for all vocabulary tokens:
 
     L_t = f_model(E_1:t)
 
@@ -68,25 +68,23 @@ The most probable token is selected using:
 
     argmax(L_t) = argmax_{v in V} L_t
 
-The corresponding embedding e_output is appended to the sequence:
+The corresponding embedding \( e_{\text{output}} \) is appended to the sequence:
 
-    E_1:t+1 = concat(E_1:t, e_output)
+    E_1:t+1 = concat(E_1:t, e_{\text{output}})
 
 ---
 
 ### **Distance Regularization**
-Ensures that optimized embeddings e_opt stay close to valid embeddings e_closest:
+Ensures that optimized embeddings \( e_{\text{opt}} \) stay close to valid embeddings \( e_{\text{closest}} \):
 
-    L_dist = ||e_opt - e_closest||_2
+    L_{\text{dist}} = ||e_{\text{opt}} - e_{\text{closest}}||_2
 
 ### **Normalization**
 Normalizes embeddings to a unit range:
 
-    e_norm = (e - min(e)) / (max(e) - min(e))
+    e_{\text{norm}} = (e - \text{min}(e)) / (\text{max}(e) - \text{min}(e))
 
 ---
-
-This should be suitable for GitHub with plain text formatting!
 
 ## **4. Key Functions**
 
@@ -141,22 +139,52 @@ def normalise(x, min_max=[]):
 
 ## **5. Word Cloud Visualizations**
 
-Below are word clouds generated from the optimized embeddings for different target phrases. These illustrate the diversity and relevance of the tokens generated.
-
-### **Example 1: Target Output - "world"**
-![image](https://github.com/user-attachments/assets/ef558acb-1902-4874-8596-6bb10e0f98a0)
+Word clouds provide a clear and engaging way to analyze the diversity and alignment of the generated tokens. Below are examples of word clouds generated for different target phrases:
 
 
-### **Example 2: Target Output - "engineer"**
-![image](https://github.com/user-attachments/assets/1249df9f-8991-4638-ab11-410d44f34f0c)
+### **Example 1: Target Output - "engineer"**
+![image](https://github.com/user-attachments/assets/4d13e2ac-4b80-48b2-ae08-8fd4ba65bc57)
 
-### **Example 3: Target Output - "girl"**
-![image](https://github.com/user-attachments/assets/e57b459d-5bfe-4322-9787-e700dfbd8387)
+
+### **Example 2: Target Output - "girl"**
+![image](https://github.com/user-attachments/assets/3c34a3de-0d26-4a4b-a701-8ad27320018e)
+
+
+### **Example 3: Target Output - "boy"**
+![image](https://github.com/user-attachments/assets/42178947-4049-4272-98d3-2eddc0f23ac1)
+
+---
+
+### **Generating Word Clouds**
+To generate and display word clouds:
+1. Install the `wordcloud` library:
+   ```bash
+   pip install wordcloud
+   ```
+2. Use the optimized embeddings to decode tokens and their probabilities.
+3. Visualize the token probabilities with the `WordCloud` class:
+   ```python
+   from wordcloud import WordCloud
+   import matplotlib.pyplot as plt
+
+   def generate_word_cloud(token_probs):
+       wc = WordCloud(background_color='white', width=800, height=400)
+       wordcloud = wc.generate_from_frequencies(token_probs)
+       plt.figure(figsize=(10, 5))
+       plt.imshow(wordcloud, interpolation='bilinear')
+       plt.axis("off")
+       plt.show()
+   ```
+
+   - **Input**: A dictionary `token_probs` with tokens as keys and probabilities as values.
+   - **Output**: A visualized word cloud.
+
+---
 
 ## **6. How to Use**
 
 1. **Setup**:
-   - Install dependencies (`transformers`, `torch`, etc.).
+   - Install dependencies (`transformers`, `torch`, `wordcloud`, etc.).
    - Clone the repository.
    - Prepare a pre-trained language model (e.g., GPT-2).
 
@@ -165,11 +193,15 @@ Below are word clouds generated from the optimized embeddings for different targ
    - Optimize embeddings using the provided functions.
 
 3. **Visualize Results**:
-   - Use the decoded tokens to evaluate the optimized embeddings.
-   - Generate word clouds using Python's `wordcloud` library to visualize token diversity.
+   - Decode the token probabilities and pass them to the `generate_word_cloud` function.
+   - View the generated word clouds to analyze token diversity.
 
 ---
 
 ## **7. Credits**
 
 This project is **heavily inspired by [Jessica Rumbelow's Backwards repository](https://github.com/jessicarumbelow/Backwards)**, which introduced the concept of embedding optimization for text generation. 
+
+--- 
+
+This updated description includes the word cloud visualization process, instructions for generating word clouds, and removed the references to the main function. Let me know if further adjustments are needed!

@@ -1,6 +1,3 @@
-![image](https://github.com/user-attachments/assets/c482c08f-1b09-4718-a9aa-9edf2b4fa21e)Here’s the updated version of your project description, where I have removed the "main function" references and added details about displaying word cloud photos:
-
----
 
 # **Embedding Optimization for Targeted Text Generation**
 
@@ -202,6 +199,3 @@ To generate and display word clouds:
 
 This project is **heavily inspired by [Jessica Rumbelow's Backwards repository](https://github.com/jessicarumbelow/Backwards)**, which introduced the concept of embedding optimization for text generation. 
 
---- 
-
-This updated description includes the word cloud visualization process, instructions for generating word clouds, and removed the references to the main function. Let me know if further adjustments are needed!
